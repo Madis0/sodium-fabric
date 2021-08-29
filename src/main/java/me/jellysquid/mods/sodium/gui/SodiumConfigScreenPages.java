@@ -320,10 +320,9 @@ public class SodiumConfigScreenPages {
 
         groups.add(OptionGroup.createBuilder()
                 .add(OptionImpl.createBuilder(int.class, sodiumOpts)
-                        .setName(new LiteralText("Max Pre-Rendered Frames"))
-                        .setTooltip(new LiteralText("Specifies the maximum number of frames the CPU can be waiting on the GPU to finish rendering. " +
-                                "Very low or high values may create frame rate instability."))
-                        .setControl(opt -> new SliderControl(opt, 0, 9, 1, ControlValueFormatter.quantity("frames")))
+                        .setName(new TranslatableText("sodium.options.max_pre_rendered_frames.name"))
+                        .setTooltip(new TranslatableText("sodium.options.max_pre_rendered_frames.tooltip"))
+                        .setControl(opt -> new SliderControl(opt, 0, 9, 1, ControlValueFormatter.preRenderedFrames()))
                         .setBinding((opts, value) -> opts.advanced.maxPreRenderedFrames = value, opts -> opts.advanced.maxPreRenderedFrames)
                         .build()
                 )
