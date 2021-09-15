@@ -23,6 +23,15 @@ public interface ControlValueFormatter {
         };
     }
 
+    static ControlValueFormatter detailDistance(int min, int max) {
+        return (value) -> {
+            if (value < min) return new TranslatableText("options.guiScale.auto").getString();
+            if (value > max) new TranslatableText("options.framerateLimit.max").getString();
+
+            return chunks().format(value);
+        };
+    }
+
     static ControlValueFormatter chunks(){
         return (v) -> new TranslatableText("options.chunks", v).getString();
     }
